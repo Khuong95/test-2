@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thu thập dữ liệu</title>
+  <title>Nhập tên</title>
   <style>
     body { font-family: Arial; background:#f4f7fb; display:flex; justify-content:center; align-items:center; height:100vh; }
     .form-container { background:white; padding:24px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); width:320px; }
@@ -17,30 +17,25 @@
 </head>
 <body>
   <div class="form-container">
-    <h2>Thu thập dữ liệu</h2>
+    <h2>Nhập tên</h2>
     <form id="dataForm">
       <label for="ten">Tên:</label>
       <input type="text" id="ten" name="ten" required>
-
-      <label for="ngay">Ngày nhập:</label>
-      <input type="date" id="ngay" name="ngay" required>
-
       <button type="submit">Gửi</button>
     </form>
     <div class="message" id="message"></div>
   </div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwm_gsy4ECTgYvTkv3aufCO-s_NKhhLUEB2Gi11AWwq1G-CUwIRspxumcx500fk2zGD/exec"; // dán URL Web App
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxiYtLKQ92ZMDIejF6uz61JT6voyB31b0duUujSrjXluKUBBxssWCqxTdtZD3gvoq-G/exec"; // dán URL Web App Apps Script
 
     document.getElementById("dataForm").addEventListener("submit", function(e) {
       e.preventDefault();
       const ten = document.getElementById("ten").value;
-      const ngay = document.getElementById("ngay").value;
 
       fetch(SCRIPT_URL, {
         method: "POST",
-        body: JSON.stringify({ ten, ngay }),
+        body: JSON.stringify({ ten }),
         headers: { "Content-Type": "application/json" }
       })
       .then(res => res.json())
